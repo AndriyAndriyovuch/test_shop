@@ -19,6 +19,8 @@ gem 'tailwindcss-rails', '~> 2.0'
 gem 'pg'
 
 group :development, :test do
+  gem 'rspec-rails', '>= 6.0.0'
+  gem 'factory_bot_rails'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 end
 
