@@ -1,0 +1,26 @@
+<!-- Footer container -->
+<footer
+  class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
+  <div
+    class="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
+      <div>
+        <span class="me-2">Get connected with me on social networks: </span>
+
+        <%= link_to "https://github.com/AndriyAndriyovuch", class:'me-3' do %>
+          <i class="fa fa-brands fa-github fa-2x"></i>
+        <% end %>
+
+        <%= link_to "https://gitlab.com/AndriyAndriyovuch", class:'me-3' do %>
+          <i class="fa fa-brands fa-gitlab fa-2x"></i>
+        <% end %>
+
+        <%= link_to "https://www.linkedin.com/in/andrii-mazurok-34929a224/", class:'me-3' do %>
+          <i class="fa fa-brands fa-linkedin fa-2x"></i>
+        <% end %>
+      </div>
+
+      <div class="text-right">
+        <span class="text-right">Lv-647-03.Ruby-ZeroWaste © <%= Time.now.year %> </span>
+      </div>
+  </div>
+</footer>
