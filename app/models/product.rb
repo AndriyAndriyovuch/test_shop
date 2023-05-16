@@ -1,6 +1,9 @@
 class Product < ApplicationRecord
   before_create :round_price
 
+  has_many :product_orders, dependent: :destroy
+  has_many :orders, through: :product_orders
+
   validates :name, :description, presence: true
   validates :price, :balance, numericality: { greater_than: 0 }
 
