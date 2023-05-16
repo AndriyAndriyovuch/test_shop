@@ -24,6 +24,7 @@ AllCops:
     - 'db/**/*'
     - 'test/**/*'
     - 'config/**/*'
+    - 'spec/**/*'
 
   TargetRubyVersion: 3.1.2
   SuggestExtensions: false
