@@ -1,8 +1,9 @@
-<nav
-  class="relative flex w-full flex-wrap items-center justify-between bg-neutral-100 py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:py-1">
+<nav class="relative flex w-full flex-wrap items-center justify-between bg-neutral-100 py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:py-1">
   <div class="flex w-full flex-wrap items-center justify-between px-3">
-    <div>
+    <div class="flex items-center justify-between" id="links">
       <%= link_to image_tag('logo.svg', width: '150'), root_path %>
+      <hr class="border-r border-neutral-500 mx-4 h-10">
+      <%= link_to 'Products', products_path %>
     </div>
   </div>
 </nav>
