@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   def index
     @products = @order.products
 
-    render 'products/index'
+    render 'orders/cart'
   end
 
   def create

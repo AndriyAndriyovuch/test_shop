@@ -1,0 +1,37 @@
+<div class="flex flex-col">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+        <table class="min-w-full text-left text-sm font-light">
+          <thead class="border-b font-medium dark:border-neutral-500">
+            <tr>
+              <th scope="col" class="px-6 py-4">#</th>
+              <th scope="col" class="px-6 py-4">Title</th>
+              <th scope="col" class="px-6 py-4">Price</th>
+              <th scope="col" class="px-6 py-4">Amount</th>
+              <th scope="col" class="px-6 py-4">Sum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @products.each do |product| %>
+              <tr
+                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                <td class="whitespace-nowrap px-6 py-4 font-medium"><%= @products.index(product) + 1 %></td>
+                <td class="whitespace-nowrap px-6 py-4"><%= product.name %></td>
+                <td class="whitespace-nowrap px-6 py-4"><%= '%.2f' % product.price %></td>
+                <td class="whitespace-nowrap px-6 py-4"><%= select_amount(product) %></td>
+                <td class="whitespace-nowrap px-6 py-4"><%= '%.2f' % select_sum(product) %></td>
+              </tr>
+            <% end %>
+            <tr class="border-b dark:border-neutral-500">
+              <td colspan="4" class="whitespace-nowrap px-6 py-2">
+                Total sum
+              </td>
+              <td class="whitespace-nowrap px-6 py-2"><%= '%.2f' % total_sum %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
