@@ -10,7 +10,11 @@
       </p>
 
       <p class="my-5">
-        <%= '%.2f' % product.price %>
+        Price: <%= '%.2f' % product.price %> $
+      </p>
+
+      <p class="my-5">
+        Available: <%= product.balance %>
       </p>
 
       <% if action_name != "show" %>
