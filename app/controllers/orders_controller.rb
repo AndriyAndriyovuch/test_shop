@@ -9,14 +9,23 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @product_order.update(amount: (@product_order.amount + params[:amount].to_i)) if @product_order.present?
-    @order.product_orders.create(product_id: params[:product_id], amount: params[:amount]).save if @product_order.nil?
+    check_balance
+
+    @product_order.update(amount: @amount) if @product_order
+    @order.product_orders.create(product_id: params[:product_id], amount: @amount).save if @product_order.nil?
 
     redirect_to products_path
   end
 
   def destroy
-    Order.find(params[:id]).destroy
+    @order = Order.find(params[:id])
+
+    @order.products.each do |product|
+      new_balance = product.balance - @order.product_orders.find_by(product_id: product.id).amount
+      product.update(balance: new_balance)
+    end
+
+    @order.destroy
 
     redirect_to products_path
   end
@@ -30,5 +39,14 @@ class OrdersController < ApplicationController
 
   def set_product_order
     @product_order = @order.product_orders.find_by(product_id: params[:product_id])
+  end
+
+  def check_balance
+    product = Product.find(params[:product_id])
+
+    total_amount = params[:amount].to_i
+    total_amount += @product_order.amount if @product_order
+
+    @amount = total_amount <= product.balance ? total_amount : product.balance
   end
 end
