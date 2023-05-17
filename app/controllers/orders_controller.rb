@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order = Order.find(params[:id])
+    @order = Order.last
 
     @order.products.each do |product|
       new_balance = product.balance - @order.product_orders.find_by(product_id: product.id).amount
@@ -33,8 +33,7 @@ class OrdersController < ApplicationController
   private
 
   def set_order
-    current_order = Order.find_by(user_id: session.id.to_s)
-    @order = current_order.nil? ? Order.create(user_id: session.id.to_s) : current_order
+    @order = Order.last.present? ? Order.last : Order.create
   end
 
   def set_product_order
