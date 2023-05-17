@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :check_order, only: %i[create]
+  before_action :set_order, only: %i[index create]
+
   def index
-    @products = Order.find_by(user_id: session.id.to_s).products
+    @products = @order.products
+
     render 'products/index'
   end
 
@@ -11,13 +13,10 @@ class OrdersController < ApplicationController
     redirect_to products_path
   end
 
-
   private
 
-  def check_order
-    @order = Order.find_by(user_id: session.id.to_s)
-
-    return Order.create(user_id: session.id) if @order.nil?
-    @order
+  def set_order
+    current_order = Order.find_by(user_id: session.id.to_s)
+    @order = current_order.nil? ? Order.create(user_id: session.id.to_s) : current_order
   end
 end

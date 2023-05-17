@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   before_create :round_price
+  before_update :round_price
 
   has_many :product_orders, dependent: :destroy
   has_many :orders, through: :product_orders
