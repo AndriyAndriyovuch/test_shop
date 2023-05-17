@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+
+10.times do
+  Product.create(
+    name: Faker::Game.title,
+    description: Faker::Lorem.paragraph(sentence_count: 3),
+    price: rand(15.0..99.0),
+    balance: rand(20..60))
+end

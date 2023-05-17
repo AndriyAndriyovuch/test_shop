@@ -18,6 +18,8 @@ gem 'foreman'
 gem 'rubocop'
 gem 'tailwindcss-rails', '~> 2.0'
 
+gem 'faker'
+
 gem 'pg'
 
 group :development, :test do

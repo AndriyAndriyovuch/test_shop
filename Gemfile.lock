@@ -95,6 +95,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (3.2.0)
+      i18n (>= 1.8.11, < 2)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
     foreman (0.87.2)
@@ -261,6 +263,7 @@ DEPENDENCIES
   capybara
   debug
   factory_bot_rails
+  faker
   font-awesome-rails
   foreman
   importmap-rails
