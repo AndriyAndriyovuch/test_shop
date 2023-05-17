@@ -10,6 +10,7 @@
               <th scope="col" class="px-6 py-4">Price</th>
               <th scope="col" class="px-6 py-4">Amount</th>
               <th scope="col" class="px-6 py-4">Sum</th>
+              <th scope="col" class="px-6 py-4"></th>
             </tr>
           </thead>
           <tbody>
@@ -21,6 +22,11 @@
                 <td class="whitespace-nowrap px-6 py-4"><%= '%.2f' % product.price %></td>
                 <td class="whitespace-nowrap px-6 py-4"><%= select_amount(product) %></td>
                 <td class="whitespace-nowrap px-6 py-4"><%= '%.2f' % select_sum(product) %></td>
+                <td class="whitespace-nowrap px-6 py-4">
+                  <%= button_to delete_product_path(@order.product_orders.find_by(product_id: product.id).id), method: :delete do %>
+                    <i class="fa fa-regular fa-trash fa-2x"></i>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
             <tr class="border-b dark:border-neutral-500">
