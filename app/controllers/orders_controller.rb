@@ -9,8 +9,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @product_order.update(amount: (@product_order.amount + 1)) if @product_order.present?
-    @order.product_orders.create(product_id: params[:product_id], amount: 1).save if @product_order.nil?
+    @product_order.update(amount: (@product_order.amount + params[:amount].to_i)) if @product_order.present?
+    @order.product_orders.create(product_id: params[:product_id], amount: params[:amount]).save if @product_order.nil?
 
     redirect_to products_path
   end
@@ -25,5 +25,4 @@ class OrdersController < ApplicationController
   def set_product_order
     @product_order = @order.product_orders.find_by(product_id: params[:product_id])
   end
-
 end
