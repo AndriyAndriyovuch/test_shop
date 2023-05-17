@@ -31,6 +31,8 @@
             </tr>
           </tbody>
         </table>
+
+        <%= button_to 'Pay this order', pay_order_path(@order), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
       </div>
     </div>
   </div>

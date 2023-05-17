@@ -15,6 +15,12 @@ class OrdersController < ApplicationController
     redirect_to products_path
   end
 
+  def destroy
+    Order.find(params[:id]).destroy
+
+    redirect_to products_path
+  end
+
   private
 
   def set_order
