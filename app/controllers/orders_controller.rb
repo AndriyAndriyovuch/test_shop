@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[index create]
+  before_action :set_order, only: %i[index create set_product_order]
+  before_action :set_product_order, only: %i[create]
 
   def index
     @products = @order.products
@@ -8,7 +9,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order.product_orders.create(product_id: params[:product_id]).save
+    @product_order.update(amount: (@product_order.amount + 1)) if @product_order.present?
+    @order.product_orders.create(product_id: params[:product_id], amount: 1).save if @product_order.nil?
 
     redirect_to products_path
   end
@@ -19,4 +21,9 @@ class OrdersController < ApplicationController
     current_order = Order.find_by(user_id: session.id.to_s)
     @order = current_order.nil? ? Order.create(user_id: session.id.to_s) : current_order
   end
+
+  def set_product_order
+    @product_order = @order.product_orders.find_by(product_id: params[:product_id])
+  end
+
 end
