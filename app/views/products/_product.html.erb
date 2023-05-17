@@ -10,7 +10,7 @@
       </p>
 
       <p class="my-5">
-        <%= product.price %>
+        <%= '%.2f' % product.price %>
       </p>
 
       <% if action_name != "show" %>
@@ -18,6 +18,10 @@
         <%= link_to 'Edit this product', edit_product_path(product), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
         <hr class="mt-6">
       <% end %>
+
+      <div class="flex justify-center">
+        <%= link_to 'Buy', buy_path(product_id: product.id), class: "rounded bg-primary-100 px-6 pb-2 pt-2.5 uppercase leading-normal text-primary-700 content-around" %>
+      </div>
     </div>
   </div>
 </div>
