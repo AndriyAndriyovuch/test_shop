@@ -14,13 +14,16 @@
       </p>
 
       <% if action_name != "show" %>
-        <%= link_to "Show this product", product, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-        <%= link_to 'Edit this product', edit_product_path(product), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Show this product", product, class:"inline-block rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50" %>
         <hr class="mt-6">
       <% end %>
 
-      <div class="flex justify-center">
-        <%= link_to 'Buy', buy_path(product_id: product.id), class: "rounded bg-primary-100 px-6 pb-2 pt-2.5 uppercase leading-normal text-primary-700 content-around" %>
+      <div class="relative mb-3">
+        <%= form_with url: buy_path, method: :get do |form| %>
+          <%= form.hidden_field :product_id, value: product.id %>
+          <%= form.number_field :amount, class:'w-[150px]' %>
+          <%= form.submit "Buy", class:"inline-block rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50" %>
+        <% end %>
       </div>
     </div>
   </div>
