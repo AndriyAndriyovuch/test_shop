@@ -23,10 +23,12 @@
       <% end %>
 
       <div class="relative mb-3">
-        <%= form_with url: buy_path, method: :get do |form| %>
-          <%= form.hidden_field :product_id, value: product.id %>
-          <%= form.number_field :amount, class:'w-[100px] h-[37px]' %>
-          <%= form.submit "Add to cart", class:"inline-block rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50" %>
+        <% if product.balance.positive? %>
+          <%= form_with url: buy_path, method: :get do |form| %>
+            <%= form.hidden_field :product_id, value: product.id %>
+            <%= form.number_field :amount, class:'w-[100px] h-[37px]' %>
+            <%= form.submit "Add to cart", class:"inline-block rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50" %>
+          <% end %>
         <% end %>
       </div>
     </div>
