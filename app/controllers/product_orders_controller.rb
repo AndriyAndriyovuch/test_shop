@@ -3,7 +3,7 @@ class ProductOrdersController < ApplicationController
 
   def destroy
     @product_order.destroy
-    redirect_to cart_path
+    redirect_to orders_path
   end
 
   private
