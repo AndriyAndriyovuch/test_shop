@@ -10,12 +10,13 @@ class OrdersController < ApplicationController
 
   def create
     check_balance
+    return if @amount.zero?
 
-    @product_order.update(amount: @amount) if @product_order
+    @product_order&.update(amount: @amount)
     @order.product_orders.create(product_id: params[:product_id], amount: @amount).save if @product_order.nil?
 
     respond_to do |format|
-        format.html { redirect_to products_path, notice: 'Item is added to cart' }
+      format.html { redirect_to products_path, notice: 'Item is added to cart' }
     end
   end
 
@@ -57,7 +58,7 @@ class OrdersController < ApplicationController
     total_amount = params[:amount].to_i
     total_amount += @product_order.amount if @product_order
 
-    @amount = total_amount <= product.balance ? total_amount : product.balance
+    @amount = [total_amount, product.balance].min
   end
 
   def sub_balance

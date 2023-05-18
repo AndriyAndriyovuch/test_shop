@@ -1,8 +1,8 @@
-<div class="flex w-1/4 flex-wrap">
+
   <div class="w-full p-1 md:p-2">
     <div id="<%= dom_id product %>">
       <p class="my-5 font-semibold text-3xl">
-        <%= product.name.truncate(20, separator: ' ') %>
+        <%= truncate_string(action_name, product.name) %>
       </p>
 
       <p class="my-5">
@@ -33,4 +33,3 @@
       </div>
     </div>
   </div>
-</div>

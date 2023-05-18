@@ -1,4 +1,4 @@
-module OrdersHelper
+module OrderHelper
   def select_amount(product)
     @order.product_orders.find_by(product_id: product.id).amount
   end
