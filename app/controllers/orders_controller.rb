@@ -14,7 +14,9 @@ class OrdersController < ApplicationController
     @product_order.update(amount: @amount) if @product_order
     @order.product_orders.create(product_id: params[:product_id], amount: @amount).save if @product_order.nil?
 
-    redirect_to products_path
+    respond_to do |format|
+        format.html { redirect_to products_path, notice: 'Item is added to cart' }
+    end
   end
 
   def update
