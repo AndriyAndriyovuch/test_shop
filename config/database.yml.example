@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: one_stop_shop_dev
+  database: test_shop_dev
   pool: 5
   username: postgres
   password:
@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: one_stop_shop_test
+  database: test_shop_test
   pool: 5
   username: postgres
   password:
@@ -17,7 +17,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: one_stop_shop_prod
+  database: test_shop_prod
   pool: 5
   username: postgres
   password:
